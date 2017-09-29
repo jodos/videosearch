@@ -1,10 +1,11 @@
 package ch.lab4tech.jav09.gui.bottom;
 
+import ch.lab4tech.jav09.gui.MainGUI;
+import ch.lab4tech.jav09.model.Movie;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.util.List;
-
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -12,10 +13,9 @@ import javax.swing.JTable;
 import javax.swing.JTextPane;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
+import lombok.Data;
 
-import ch.lab4tech.jav09.gui.MainGUI;
-import ch.lab4tech.jav09.model.Movie;
-
+@Data
 @SuppressWarnings("serial")
 public class ResultPanel extends JPanel {
 
@@ -56,7 +56,7 @@ public class ResultPanel extends JPanel {
     public void printResults(List<Movie> movies) {
         for (Movie movie : movies) {
             tableModel.addRow(new Object[]{movie.getTitle(), movie.getRating(), movie.getCategoryCode(),
-                        movie.getDescription()});
+                movie.getDescription()});
         }
     }
 
@@ -64,43 +64,4 @@ public class ResultPanel extends JPanel {
         textPane.setText("Aucun film ne correspond au(x) critères sélectionné(s)");
     }
 
-    public JLabel getResultPanelLabel() {
-        return resultPanelLabel;
-    }
-
-    public void setResultPanelLabel(JLabel resultPanelLabel) {
-        this.resultPanelLabel = resultPanelLabel;
-    }
-
-    public JScrollPane getScrollPane() {
-        return scrollPane;
-    }
-
-    public void setScrollPane(JScrollPane scrollPane) {
-        this.scrollPane = scrollPane;
-    }
-
-    public JTable getTable() {
-        return table;
-    }
-
-    public void setTable(JTable table) {
-        this.table = table;
-    }
-
-    public DefaultTableModel getTableModel() {
-        return tableModel;
-    }
-
-    public void setTableModel(DefaultTableModel tableModel) {
-        this.tableModel = tableModel;
-    }
-
-    public JTextPane getTextPane() {
-        return textPane;
-    }
-
-    public void setTextPane(JTextPane textPane) {
-        this.textPane = textPane;
-    }
 }

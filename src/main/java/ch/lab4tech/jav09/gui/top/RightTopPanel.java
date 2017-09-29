@@ -1,9 +1,9 @@
 package ch.lab4tech.jav09.gui.top;
 
+import ch.lab4tech.jav09.gui.MainGUI;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
-
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -12,9 +12,9 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
+import lombok.Data;
 
-import ch.lab4tech.jav09.gui.MainGUI;
-
+@Data
 @SuppressWarnings("serial")
 public class RightTopPanel extends JPanel {
 
@@ -84,61 +84,5 @@ public class RightTopPanel extends JPanel {
 
     public boolean isAuto() {
         return auto.isSelected();
-    }
-
-    public JLabel getLabel() {
-        return label;
-    }
-
-    public void setLabel(JLabel label) {
-        this.label = label;
-    }
-
-    public JPanel getInner() {
-        return inner;
-    }
-
-    public void setInner(JPanel inner) {
-        this.inner = inner;
-    }
-
-    public ButtonGroup getButtonGroup() {
-        return buttonGroup;
-    }
-
-    public void setButtonGroup(ButtonGroup buttonGroup) {
-        this.buttonGroup = buttonGroup;
-    }
-
-    public JRadioButton getAuto() {
-        return auto;
-    }
-
-    public void setAuto(JRadioButton auto) {
-        this.auto = auto;
-    }
-
-    public JRadioButton getNoAuto() {
-        return noAuto;
-    }
-
-    public void setNoAuto(JRadioButton noAuto) {
-        this.noAuto = noAuto;
-    }
-
-    public JButton getRequest() {
-        return request;
-    }
-
-    public void setRequest(JButton request) {
-        this.request = request;
-    }
-
-    public JButton getClear() {
-        return clear;
-    }
-
-    public void setClear(JButton clear) {
-        this.clear = clear;
     }
 }

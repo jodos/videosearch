@@ -1,13 +1,12 @@
 package ch.lab4tech.jav09.dao;
 
+import ch.lab4tech.jav09.db.CommonJdbcConnection;
+import ch.lab4tech.jav09.model.Category;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import ch.lab4tech.jav09.db.CommonJdbcConnection;
-import ch.lab4tech.jav09.model.Category;
 
 public class CategoryJdbcDAO extends CommonJdbcConnection implements CategoryDAO {
 
@@ -15,21 +14,18 @@ public class CategoryJdbcDAO extends CommonJdbcConnection implements CategoryDAO
     private ResultSet resultSet = null;
 
     @Override
-    public List<Category> find() {
-        List<Category> categories = new ArrayList<Category>();
+    public List<String> find() {
+        List<String> categories = new ArrayList<String>();
         Category category = null;
 
         try {
-            String query = "SELECT * FROM tblcategories";
+            String query = "SELECT Description FROM tblcategories";
             connection = getConnection();
             preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                category = new Category();
-                category.setCode(Integer.parseInt(resultSet.getString(1)));
-                category.setDescription(resultSet.getString(2));
-                categories.add(category);
+                categories.add(resultSet.getString(1));
             }
 
         } catch (SQLException e) {

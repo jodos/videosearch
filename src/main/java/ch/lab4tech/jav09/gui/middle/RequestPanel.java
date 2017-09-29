@@ -3,31 +3,26 @@ package ch.lab4tech.jav09.gui.middle;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
+import lombok.Data;
 
-@SuppressWarnings("serial")
+@Data
 public class RequestPanel extends JScrollPane {
-	private JTextPane textPane;
 
-	public RequestPanel(JFrame mainGUI) {
-		textPane = new JTextPane();
-		textPane.setEditable(Boolean.FALSE);
-		this.setViewportView(textPane);
-	}
+    private JTextPane textPane;
 
-	public void reset() {
-		textPane.setText("");
-	}
+    public RequestPanel(JFrame mainGUI) {
+        textPane = new JTextPane();
+        textPane.setEditable(Boolean.FALSE);
+        this.setViewportView(textPane);
+    }
 
-	public void print(String request) {
-		reset();
-		textPane.setText(request);
-	}
+    public void reset() {
+        textPane.setText("");
+    }
 
-	public JTextPane getTextPane() {
-		return textPane;
-	}
+    public void print(String request) {
+        reset();
+        textPane.setText(request);
+    }
 
-	public void setTextPane(JTextPane textPane) {
-		this.textPane = textPane;
-	}
 }
