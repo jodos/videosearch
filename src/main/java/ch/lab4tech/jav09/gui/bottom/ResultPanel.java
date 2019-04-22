@@ -50,7 +50,7 @@ public class ResultPanel extends JPanel {
     public void printResults(List<Movie> movies) {
         for (Movie movie : movies) {
             tableModel.addRow(new Object[]{movie.getTitle(), movie.getRating(), movie.getCategoryCode(),
-                movie.getDescription()});
+                    movie.getDescription()});
         }
     }
 

@@ -1,16 +1,16 @@
 package ch.lab4tech.jav09.gui.middle;
 
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-import javax.swing.JTextPane;
-import lombok.Data;
+import ch.lab4tech.jav09.gui.MainGUI;
+import lombok.Getter;
 
-@Data
+import javax.swing.*;
+
+@Getter
 public class RequestPanel extends JScrollPane {
 
     private JTextPane textPane;
 
-    public RequestPanel(JFrame mainGUI) {
+    public RequestPanel(MainGUI mainGUI) {
         textPane = new JTextPane();
         textPane.setEditable(Boolean.FALSE);
         this.setViewportView(textPane);

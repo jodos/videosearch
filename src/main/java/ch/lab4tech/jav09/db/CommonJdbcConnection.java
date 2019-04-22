@@ -4,11 +4,11 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class CommonJdbcConnection {
-	protected Connection connection = null;
+    protected Connection connection = null;
 
-	protected Connection getConnection() throws SQLException {
-		Connection connection;
-		connection = ConnectionFactory.getInstance().getConnection();
-		return connection;
-	}
+    protected Connection getConnection() throws SQLException {
+        Connection connection;
+        connection = ConnectionFactory.getInstance().getConnection();
+        return connection;
+    }
 }

@@ -1,20 +1,5 @@
 package ch.lab4tech.jav09.gui;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.util.List;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JRadioButton;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
 import ch.lab4tech.jav09.dao.MovieDAO;
 import ch.lab4tech.jav09.dao.MovieJdbcDAO;
 import ch.lab4tech.jav09.gui.bottom.ResultPanel;
@@ -23,8 +8,19 @@ import ch.lab4tech.jav09.gui.top.FormPanel;
 import ch.lab4tech.jav09.model.Category;
 import ch.lab4tech.jav09.model.Movie;
 import ch.lab4tech.jav09.model.Rating;
+import lombok.Getter;
 
-@SuppressWarnings("serial")
+import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.List;
+
+@Getter
 public class MainGUI extends JFrame implements ActionListener, ListSelectionListener, ItemListener {
 
     private FormPanel formPanel;
@@ -120,37 +116,5 @@ public class MainGUI extends JFrame implements ActionListener, ListSelectionList
         } else {
             resultPanel.showInfo();
         }
-    }
-
-    public FormPanel getFormPanel() {
-        return formPanel;
-    }
-
-    public void setFormPanel(FormPanel formPanel) {
-        this.formPanel = formPanel;
-    }
-
-    public RequestPanel getRequestPanel() {
-        return requestPanel;
-    }
-
-    public void setRequestPanel(RequestPanel requestPanel) {
-        this.requestPanel = requestPanel;
-    }
-
-    public ResultPanel getResultPanel() {
-        return resultPanel;
-    }
-
-    public void setResultPanel(ResultPanel resultPanel) {
-        this.resultPanel = resultPanel;
-    }
-
-    public Object getCurrentActionEventSource() {
-        return currentActionEventSource;
-    }
-
-    public void setCurrentActionEventSource(Object currentActionEventSource) {
-        this.currentActionEventSource = currentActionEventSource;
     }
 }

@@ -1,15 +1,15 @@
 package ch.lab4tech.jav09.dao;
 
+import ch.lab4tech.jav09.db.CommonJdbcConnection;
+import ch.lab4tech.jav09.model.Category;
+import ch.lab4tech.jav09.model.Movie;
+import ch.lab4tech.jav09.model.Rating;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import ch.lab4tech.jav09.db.CommonJdbcConnection;
-import ch.lab4tech.jav09.model.Category;
-import ch.lab4tech.jav09.model.Movie;
-import ch.lab4tech.jav09.model.Rating;
 
 public class MovieJdbcDAO extends CommonJdbcConnection implements MovieDAO {
 
@@ -17,16 +17,10 @@ public class MovieJdbcDAO extends CommonJdbcConnection implements MovieDAO {
     private final ResultSet resultSet = null;
     private String currentSQLQuery = null;
 
-    /**
-     *
-     * @param categories
-     * @param ratings
-     * @return
-     */
     @Override
     public List<Movie> findByCodeAndRating(List<Category> categories, List<Rating> ratings) {
-        List<Movie> movies = new ArrayList<Movie>();
-        Movie movie = null;
+        List<Movie> movies = new ArrayList<>();
+        Movie movie;
 
         final int sizeCategories = categories.size();
         final int sizeRatings = ratings.size();

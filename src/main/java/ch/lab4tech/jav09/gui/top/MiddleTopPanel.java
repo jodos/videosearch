@@ -4,21 +4,15 @@ import ch.lab4tech.jav09.dao.RatingDAO;
 import ch.lab4tech.jav09.dao.RatingJdbcDAO;
 import ch.lab4tech.jav09.gui.MainGUI;
 import ch.lab4tech.jav09.model.Rating;
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Dimension;
+import lombok.Getter;
+
+import javax.swing.*;
+import javax.swing.border.TitledBorder;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.BoxLayout;
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-import javax.swing.border.TitledBorder;
-import lombok.Data;
 
-@Data
-@SuppressWarnings("serial")
+@Getter
 public class MiddleTopPanel extends JPanel {
 
     private JLabel label;
@@ -48,7 +42,7 @@ public class MiddleTopPanel extends JPanel {
 
     public List<Rating> getCurrentRatings() {
         Component[] components = inner.getComponents();
-        List<Rating> ratings = new ArrayList<Rating>();
+        List<Rating> ratings = new ArrayList<>();
         for (int i = 0; i < components.length; i++) {
             Component currentComponent = components[i];
             if (currentComponent instanceof JCheckBox) {

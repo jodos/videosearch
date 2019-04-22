@@ -1,21 +1,13 @@
 package ch.lab4tech.jav09.gui.top;
 
 import ch.lab4tech.jav09.gui.MainGUI;
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Dimension;
-import javax.swing.BoxLayout;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.SwingConstants;
-import javax.swing.border.TitledBorder;
-import lombok.Data;
+import lombok.Getter;
 
-@Data
-@SuppressWarnings("serial")
+import javax.swing.*;
+import javax.swing.border.TitledBorder;
+import java.awt.*;
+
+@Getter
 public class RightTopPanel extends JPanel {
 
     private JLabel label;

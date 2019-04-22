@@ -3,19 +3,18 @@ package ch.lab4tech.jav09.gui.top;
 import ch.lab4tech.jav09.gui.MainGUI;
 import ch.lab4tech.jav09.model.Category;
 import ch.lab4tech.jav09.model.Rating;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.util.List;
-import javax.swing.JPanel;
-import lombok.Data;
+import lombok.Getter;
 
-@Data
-@SuppressWarnings("serial")
+import javax.swing.*;
+import java.awt.*;
+import java.util.List;
+
+@Getter
 public class FormPanel extends JPanel {
 
-    LeftTopPanel leftTopPanel;
-    MiddleTopPanel middleTopPanel;
-    RightTopPanel rightTopPanel;
+    private LeftTopPanel leftTopPanel;
+    private MiddleTopPanel middleTopPanel;
+    private RightTopPanel rightTopPanel;
 
     public FormPanel(MainGUI mainGUI) {
         this.setPreferredSize(new Dimension(800, 200));

@@ -1,7 +1,7 @@
 package ch.lab4tech.jav09.dao;
 
 import ch.lab4tech.jav09.db.CommonJdbcConnection;
-import ch.lab4tech.jav09.model.Category;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,8 +15,7 @@ public class CategoryJdbcDAO extends CommonJdbcConnection implements CategoryDAO
 
     @Override
     public List<String> find() {
-        List<String> categories = new ArrayList<String>();
-        Category category = null;
+        List<String> categories = new ArrayList<>();
 
         try {
             String query = "SELECT Description FROM tblcategories";
