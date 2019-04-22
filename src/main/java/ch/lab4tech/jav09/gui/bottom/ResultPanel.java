@@ -2,21 +2,15 @@ package ch.lab4tech.jav09.gui.bottom;
 
 import ch.lab4tech.jav09.gui.MainGUI;
 import ch.lab4tech.jav09.model.Movie;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.util.List;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextPane;
+import lombok.Getter;
+
+import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
-import lombok.Data;
+import java.awt.*;
+import java.util.List;
 
-@Data
-@SuppressWarnings("serial")
+@Getter
 public class ResultPanel extends JPanel {
 
     private JLabel resultPanelLabel;
