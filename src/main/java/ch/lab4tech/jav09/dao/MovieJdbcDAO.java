@@ -20,7 +20,6 @@ public class MovieJdbcDAO extends CommonJdbcConnection implements MovieDAO {
     @Override
     public List<Movie> findByCodeAndRating(List<Category> categories, List<Rating> ratings) {
         List<Movie> movies = new ArrayList<>();
-        Movie movie;
 
         final int sizeCategories = categories.size();
         final int sizeRatings = ratings.size();
@@ -75,7 +74,7 @@ public class MovieJdbcDAO extends CommonJdbcConnection implements MovieDAO {
                 ResultSet rs = preparedStatement.executeQuery();
 
                 while (rs.next()) {
-                    movie = new Movie();
+                    Movie movie = new Movie();
                     movie.setTitle(rs.getString(1));
                     movie.setRating(rs.getString(2));
                     movie.setCategoryCode(rs.getInt(3));

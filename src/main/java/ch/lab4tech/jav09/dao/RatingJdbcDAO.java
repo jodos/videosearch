@@ -17,7 +17,6 @@ public class RatingJdbcDAO extends CommonJdbcConnection implements RatingDAO {
     @Override
     public List<Rating> find() {
         List<Rating> ratings = new ArrayList<Rating>();
-        Rating rating;
 
         try {
             String query = "SELECT * FROM tblratings";
@@ -26,7 +25,7 @@ public class RatingJdbcDAO extends CommonJdbcConnection implements RatingDAO {
             resultSet = PreparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                rating = new Rating();
+                Rating rating = new Rating();
                 rating.setRating(resultSet.getString(1));
                 rating.setDescription(resultSet.getString(2));
                 ratings.add(rating);
