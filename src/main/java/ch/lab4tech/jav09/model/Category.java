@@ -16,5 +16,6 @@ public class Category {
   @Column(name = "CATEGORYCODE")
   private int code;
 
+  @Column(name = "DESCRIPTION")
   private String description;
 }
