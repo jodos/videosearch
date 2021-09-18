@@ -8,21 +8,20 @@ import javax.swing.*;
 @Getter
 public class RequestPanel extends JScrollPane {
 
-    private JTextPane textPane;
+  private final JTextPane textPane;
 
-    public RequestPanel(MainGUI mainGUI) {
-        textPane = new JTextPane();
-        textPane.setEditable(Boolean.FALSE);
-        this.setViewportView(textPane);
-    }
+  public RequestPanel(MainGUI mainGUI) {
+    textPane = new JTextPane();
+    textPane.setEditable(Boolean.FALSE);
+    this.setViewportView(textPane);
+  }
 
-    public void reset() {
-        textPane.setText("");
-    }
+  public void reset() {
+    textPane.setText("");
+  }
 
-    public void print(String request) {
-        reset();
-        textPane.setText(request);
-    }
-
+  public void print(String request) {
+    reset();
+    textPane.setText(request);
+  }
 }
