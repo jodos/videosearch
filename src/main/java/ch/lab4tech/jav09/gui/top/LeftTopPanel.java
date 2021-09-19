@@ -50,11 +50,11 @@ public class LeftTopPanel extends JPanel {
   }
 
   private List<String> entityToString(List<Category> categories) {
-    final List<String> list = new ArrayList<String>(categories.size());
+    final List<String> l = new ArrayList<>(categories.size());
 
     for (Category c : categories) {
-      list.add(c.getDescription());
+      l.add(c.getDescription());
     }
-    return list;
+    return l;
   }
 }

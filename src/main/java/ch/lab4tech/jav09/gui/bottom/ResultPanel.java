@@ -1,6 +1,5 @@
 package ch.lab4tech.jav09.gui.bottom;
 
-import ch.lab4tech.jav09.gui.MainGUI;
 import ch.lab4tech.jav09.model.Movie;
 import lombok.Getter;
 
@@ -19,7 +18,7 @@ public class ResultPanel extends JPanel {
   private final DefaultTableModel tableModel;
   private final JTextPane textPane;
 
-  public ResultPanel(MainGUI mainGUI) {
+  public ResultPanel() {
     this.setLayout(new BorderLayout(0, 0));
     this.setPreferredSize(new Dimension(800, 200));
 

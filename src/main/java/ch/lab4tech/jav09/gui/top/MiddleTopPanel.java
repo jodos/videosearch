@@ -27,7 +27,7 @@ public class MiddleTopPanel extends JPanel {
     final List<Rating> ratings = ratingRepository.findAll();
 
     for (Rating codes : ratings) {
-      JCheckBox jCheckBox = new JCheckBox(codes.getRating());
+      JCheckBox jCheckBox = new JCheckBox(codes.getRatingId());
       jCheckBox.addItemListener(mainGUI);
       inner.add(jCheckBox);
     }
@@ -47,7 +47,7 @@ public class MiddleTopPanel extends JPanel {
         JCheckBox jCheckBox = (JCheckBox) currentComponent;
         if (jCheckBox.isSelected()) {
           Rating rating = new Rating();
-          rating.setRating(jCheckBox.getText());
+          rating.setRatingId(jCheckBox.getText());
           ratings.add(rating);
         }
       }

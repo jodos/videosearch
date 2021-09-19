@@ -49,8 +49,8 @@ public class MainGUI extends JFrame implements ActionListener, ListSelectionList
     this.movieRepository = movieRepository;
 
     formPanel = new FormPanel(this, categoryRepository, ratingRepository);
-    requestPanel = new RequestPanel(this);
-    resultPanel = new ResultPanel(this);
+    requestPanel = new RequestPanel();
+    resultPanel = new ResultPanel();
 
     this.getContentPane().add(formPanel, BorderLayout.NORTH);
     this.getContentPane().add(requestPanel, BorderLayout.CENTER);
@@ -68,11 +68,9 @@ public class MainGUI extends JFrame implements ActionListener, ListSelectionList
     JButton request = formPanel.getRightTopPanel().getRequest();
     JButton clear = formPanel.getRightTopPanel().getClear();
 
-    if (currentActionEventSource == auto) {
-      if (request.getBackground() == Color.RED) {
-        formPanel.getRightTopPanel().resetRequestButton();
-        showResults();
-      }
+    if (currentActionEventSource == auto && request.getBackground() == Color.RED) {
+      formPanel.getRightTopPanel().resetRequestButton();
+      showResults();
     }
 
     if (currentActionEventSource == noAuto) {

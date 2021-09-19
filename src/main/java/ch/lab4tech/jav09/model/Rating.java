@@ -13,8 +13,8 @@ import javax.persistence.Table;
 public class Rating {
 
   @Id
-  @Column(name = "RATING")
-  private String rating;
+  @Column(name = "RATING_ID")
+  private String ratingId;
 
   @Column(name = "DESCRIPTION")
   private String description;
