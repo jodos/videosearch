@@ -19,6 +19,7 @@ public class RequestPanel extends JScrollPane {
     textPane.setText("");
   }
 
+  // TODO implement print method
   public void print(String request) {
     reset();
     textPane.setText(request);

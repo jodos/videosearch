@@ -37,9 +37,9 @@ public class LeftTopPanel extends JPanel {
   public List<Category> getCurrentCategories() {
     int[] indices = list.getSelectedIndices();
     List<Category> categories = new ArrayList<>(indices.length);
-    for (int i = 0; i < indices.length; i++) {
+    for (int index : indices) {
       Category category = new Category();
-      category.setCode(indices[i] + 1);
+      category.setCode(index + 1);
       categories.add(category);
     }
     return categories;
@@ -49,6 +49,8 @@ public class LeftTopPanel extends JPanel {
     list.clearSelection();
   }
 
+
+  // TODO find a better way to convert List<Category> to List<String>
   private List<String> entityToString(List<Category> categories) {
     final List<String> l = new ArrayList<>(categories.size());
 

@@ -61,15 +61,11 @@ public class RightTopPanel extends JPanel {
 
   public void resetRequestButton() {
     Component[] components = inner.getComponents();
-    for (int i = 0; i < components.length; i++) {
-      Component component = components[i];
-      if (component instanceof JButton) {
-        JButton button = (JButton) component;
-        if (button.getText().equals("Requery")) {
-          JButton jButton = new JButton();
-          button.setBackground(jButton.getBackground());
-          button.setForeground(jButton.getForeground());
-        }
+    for (Component component : components) {
+      if (component instanceof JButton button && button.getText().equals("Requery")) {
+        JButton jButton = new JButton();
+        button.setBackground(jButton.getBackground());
+        button.setForeground(jButton.getForeground());
       }
     }
   }

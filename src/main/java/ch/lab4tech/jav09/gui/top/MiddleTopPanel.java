@@ -41,15 +41,11 @@ public class MiddleTopPanel extends JPanel {
   public List<Rating> getCurrentRatings() {
     Component[] components = inner.getComponents();
     List<Rating> ratings = new ArrayList<>();
-    for (int i = 0; i < components.length; i++) {
-      Component currentComponent = components[i];
-      if (currentComponent instanceof JCheckBox) {
-        JCheckBox jCheckBox = (JCheckBox) currentComponent;
-        if (jCheckBox.isSelected()) {
-          Rating rating = new Rating();
-          rating.setRatingId(jCheckBox.getText());
-          ratings.add(rating);
-        }
+    for (Component currentComponent : components) {
+      if (currentComponent instanceof JCheckBox jCheckBox && jCheckBox.isSelected()) {
+        Rating rating = new Rating();
+        rating.setRatingId(jCheckBox.getText());
+        ratings.add(rating);
       }
     }
     return ratings;
@@ -57,13 +53,9 @@ public class MiddleTopPanel extends JPanel {
 
   public void reset() {
     Component[] components = inner.getComponents();
-    for (int i = 0; i < components.length; i++) {
-      Component currentComponent = components[i];
-      if (currentComponent instanceof JCheckBox) {
-        JCheckBox jCheckBox = (JCheckBox) currentComponent;
-        if (jCheckBox.isSelected()) {
-          jCheckBox.setSelected(Boolean.FALSE);
-        }
+    for (Component currentComponent : components) {
+      if (currentComponent instanceof JCheckBox jCheckBox && jCheckBox.isSelected()) {
+        jCheckBox.setSelected(Boolean.FALSE);
       }
     }
   }
