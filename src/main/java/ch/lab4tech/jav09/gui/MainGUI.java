@@ -26,105 +26,106 @@ import java.util.List;
 @Component
 public class MainGUI extends JFrame implements ActionListener, ListSelectionListener, ItemListener {
 
-  private final FormPanel formPanel;
-  private final RequestPanel requestPanel;
-  private final ResultPanel resultPanel;
-  private final CategoryRepository categoryRepository;
-  private final MovieRepository movieRepository;
-  private Object currentActionEventSource = null;
+    private final FormPanel formPanel;
+    private final RequestPanel requestPanel;
+    private final ResultPanel resultPanel;
+    private final CategoryRepository categoryRepository;
+    private final MovieRepository movieRepository;
+    private Object currentActionEventSource = null;
 
-  public MainGUI(
-      CategoryRepository categoryRepository,
-      RatingRepository ratingRepository,
-      MovieRepository movieRepository) {
-    this.setResizable(false);
-    this.setTitle("Liste de films");
-    this.setSize(new Dimension(800, 600));
-    this.getContentPane().setLayout(new BorderLayout(0, 0));
-    this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    this.setLocationRelativeTo(null);
-    this.setVisible(true);
+    public MainGUI(
+            CategoryRepository categoryRepository,
+            RatingRepository ratingRepository,
+            MovieRepository movieRepository) {
+        this.setResizable(false);
+        this.setTitle("Liste de films");
+        this.setSize(new Dimension(800, 600));
+        this.getContentPane().setLayout(new BorderLayout(0, 0));
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
 
-    this.categoryRepository = categoryRepository;
-    this.movieRepository = movieRepository;
+        this.categoryRepository = categoryRepository;
+        this.movieRepository = movieRepository;
 
-    formPanel = new FormPanel(this, categoryRepository, ratingRepository);
-    requestPanel = new RequestPanel();
-    resultPanel = new ResultPanel();
+        formPanel = new FormPanel(this, categoryRepository, ratingRepository);
+        requestPanel = new RequestPanel();
+        resultPanel = new ResultPanel();
 
-    this.getContentPane().add(formPanel, BorderLayout.NORTH);
-    this.getContentPane().add(requestPanel, BorderLayout.CENTER);
-    this.getContentPane().add(resultPanel, BorderLayout.SOUTH);
-  }
-
-  @Override
-  public void actionPerformed(ActionEvent actionEvent) {
-
-    currentActionEventSource = actionEvent.getSource();
-    boolean isAutoRequery = formPanel.isAuto();
-
-    JRadioButton auto = formPanel.getRightTopPanel().getAuto();
-    JRadioButton noAuto = formPanel.getRightTopPanel().getNoAuto();
-    JButton request = formPanel.getRightTopPanel().getRequest();
-    JButton clear = formPanel.getRightTopPanel().getClear();
-
-    if (currentActionEventSource == auto && request.getBackground() == Color.RED) {
-      formPanel.getRightTopPanel().resetRequestButton();
-      showResults();
+        this.getContentPane().add(formPanel, BorderLayout.NORTH);
+        this.getContentPane().add(requestPanel, BorderLayout.CENTER);
+        this.getContentPane().add(resultPanel, BorderLayout.SOUTH);
     }
 
-    if (currentActionEventSource == noAuto) {
-      request.setBackground(Color.RED);
+    @Override
+    public void actionPerformed(ActionEvent actionEvent) {
+
+        currentActionEventSource = actionEvent.getSource();
+        boolean isAutoRequery = formPanel.isAuto();
+
+        JRadioButton auto = formPanel.getRightTopPanel().getAuto();
+        JRadioButton noAuto = formPanel.getRightTopPanel().getNoAuto();
+        JButton request = formPanel.getRightTopPanel().getRequest();
+        JButton clear = formPanel.getRightTopPanel().getClear();
+
+        if (currentActionEventSource == auto && request.getBackground() == Color.RED) {
+            formPanel.getRightTopPanel().resetRequestButton();
+            showResults();
+        }
+
+        if (currentActionEventSource == noAuto) {
+            request.setBackground(Color.RED);
+        }
+
+        if (currentActionEventSource == request && !isAutoRequery) {
+            showResults();
+        }
+
+        if (currentActionEventSource == clear) {
+            formPanel.reset();
+            requestPanel.reset();
+            resultPanel.reset();
+        }
     }
 
-    if (currentActionEventSource == request && !isAutoRequery) {
-      showResults();
+    @Override
+    public void valueChanged(ListSelectionEvent listSelectionEvent) {
+        JButton clear = formPanel.getRightTopPanel().getClear();
+        boolean isAutoRequery = formPanel.isAuto();
+
+        if (isAutoRequery
+                && !listSelectionEvent.getValueIsAdjusting()
+                && currentActionEventSource != clear) {
+            showResults();
+        }
+        currentActionEventSource = null;
     }
 
-    if (currentActionEventSource == clear) {
-      formPanel.reset();
-      requestPanel.reset();
-      resultPanel.reset();
+    @Override
+    public void itemStateChanged(ItemEvent itemEvent) {
+        JButton clear = formPanel.getRightTopPanel().getClear();
+        boolean isAutoRequery = formPanel.isAuto();
+
+        if (isAutoRequery && currentActionEventSource != clear) {
+            showResults();
+        }
+        currentActionEventSource = null;
     }
-  }
 
-  @Override
-  public void valueChanged(ListSelectionEvent listSelectionEvent) {
-    JButton clear = formPanel.getRightTopPanel().getClear();
-    boolean isAutoRequery = formPanel.isAuto();
+    private void showResults() {
+        List<Category> currentCategories = formPanel.getCurrentCategories();
+        List<Rating> currentRatings = formPanel.getCurrentRatings();
 
-    if (isAutoRequery
-        && !listSelectionEvent.getValueIsAdjusting()
-        && currentActionEventSource != clear) {
-      showResults();
+        // TODO add "dynamic" request into movieRepository
+        List<Movie> movies = movieRepository.findAll();
+
+        resultPanel.reset();
+        // requestPanel.print();
+
+        if (!movies.isEmpty()) {
+            resultPanel.printResults(movies);
+        } else {
+            resultPanel.showInfo();
+        }
     }
-    currentActionEventSource = null;
-  }
-
-  @Override
-  public void itemStateChanged(ItemEvent itemEvent) {
-    JButton clear = formPanel.getRightTopPanel().getClear();
-    boolean isAutoRequery = formPanel.isAuto();
-
-    if (isAutoRequery && currentActionEventSource != clear) {
-      showResults();
-    }
-    currentActionEventSource = null;
-  }
-
-  private void showResults() {
-    List<Category> currentCategories = formPanel.getCurrentCategories();
-    List<Rating> currentRatings = formPanel.getCurrentRatings();
-
-    List<Movie> movies = movieRepository.findAll();
-
-    resultPanel.reset();
-    // requestPanel.print();
-
-    if (!movies.isEmpty()) {
-      resultPanel.printResults(movies);
-    } else {
-      resultPanel.showInfo();
-    }
-  }
 }
