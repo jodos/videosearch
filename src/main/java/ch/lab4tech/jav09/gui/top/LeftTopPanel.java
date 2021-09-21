@@ -10,6 +10,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+import java.util.stream.Collectors;
 
 @Getter
 public class LeftTopPanel extends JPanel {
@@ -26,7 +27,7 @@ public class LeftTopPanel extends JPanel {
 
         final List<Category> categories = categoryRepository.findAll();
         scrollPane = new JScrollPane();
-        list = new JList<>(new Vector<>(entityToString(categories)));
+        list = new JList<>(new Vector<>(categories.stream().map(Category::getDescription).collect(Collectors.toList())));
         scrollPane.setViewportView(list);
         list.addListSelectionListener(mainGUI);
 
@@ -47,16 +48,5 @@ public class LeftTopPanel extends JPanel {
 
     public void reset() {
         list.clearSelection();
-    }
-
-
-    // TODO find a better way to convert List<Category> to List<String>
-    private List<String> entityToString(List<Category> categories) {
-        final List<String> l = new ArrayList<>(categories.size());
-
-        for (Category c : categories) {
-            l.add(c.getDescription());
-        }
-        return l;
     }
 }
