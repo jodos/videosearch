@@ -12,10 +12,10 @@ import javax.persistence.Table;
 @Table(name = "TBLRATINGS")
 public class Rating {
 
-  @Id
-  @Column(name = "RATING_ID")
-  private String ratingId;
+    @Id
+    @Column(name = "RATING_ID")
+    private String ratingId;
 
-  @Column(name = "DESCRIPTION")
-  private String description;
+    @Column(name = "DESCRIPTION")
+    private String description;
 }
