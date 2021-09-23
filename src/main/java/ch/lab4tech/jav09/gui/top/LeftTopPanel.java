@@ -27,7 +27,8 @@ public class LeftTopPanel extends JPanel {
 
         final List<Category> categories = categoryRepository.findAll();
         scrollPane = new JScrollPane();
-        list = new JList<>(new Vector<>(categories.stream().map(Category::getDescription).collect(Collectors.toList())));
+        List<String> descriptions = categories.stream().map(Category::getDescription).collect(Collectors.toList());
+        list = new JList<>(new Vector<>(descriptions));
         scrollPane.setViewportView(list);
         list.addListSelectionListener(mainGUI);
 
