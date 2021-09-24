@@ -29,7 +29,6 @@ public class MainGUI extends JFrame implements ActionListener, ListSelectionList
     private final FormPanel formPanel;
     private final RequestPanel requestPanel;
     private final ResultPanel resultPanel;
-    private final CategoryRepository categoryRepository;
     private final MovieRepository movieRepository;
     private Object currentActionEventSource = null;
 
@@ -45,7 +44,6 @@ public class MainGUI extends JFrame implements ActionListener, ListSelectionList
         this.setLocationRelativeTo(null);
         this.setVisible(true);
 
-        this.categoryRepository = categoryRepository;
         this.movieRepository = movieRepository;
 
         formPanel = new FormPanel(this, categoryRepository, ratingRepository);
