@@ -28,8 +28,7 @@ public class ResultPanel extends JPanel {
         table.setEnabled(Boolean.FALSE);
         tableModel = new DefaultTableModel();
         textPane = new JTextPane();
-        textPane.setBorder(
-                new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+        textPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 
         String[] jTableHeader = {"Title", "Rating", "CategoryCode", "Description"};
         tableModel.setColumnIdentifiers(jTableHeader);
@@ -50,10 +49,7 @@ public class ResultPanel extends JPanel {
 
     public void printResults(List<Movie> movies) {
         for (Movie movie : movies) {
-            tableModel.addRow(
-                    new Object[]{
-                            movie.getTitle(), movie.getRating(), movie.getCategoryCode(), movie.getDescription()
-                    });
+            tableModel.addRow(new Object[]{movie.getTitle(), movie.getRating(), movie.getCategoryCode(), movie.getDescription()});
         }
     }
 
