@@ -8,12 +8,12 @@ import org.springframework.context.ConfigurableApplicationContext;
 @SpringBootApplication
 public class JavaVideoSearch {
 
-    public static void main(String[] args) {
-        ConfigurableApplicationContext context = createApplicationContext(args);
-        context.getBean(MainGUI.class).setVisible(true);
-    }
+	public static void main(String[] args) {
+		ConfigurableApplicationContext context = createApplicationContext(args);
+		context.getBean(MainGUI.class).setVisible(true);
+	}
 
-    private static ConfigurableApplicationContext createApplicationContext(String[] args) {
-        return new SpringApplicationBuilder(JavaVideoSearch.class).headless(false).run(args);
-    }
+	private static ConfigurableApplicationContext createApplicationContext(String[] args) {
+		return new SpringApplicationBuilder(JavaVideoSearch.class).headless(false).run(args);
+	}
 }
