@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.0</version>
+        <version>4.0.0</version>
     </parent>
 
     <groupId>ch.lab4tech</groupId>
@@ -17,8 +17,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.source>25</maven.compiler.source>
+        <maven.compiler.target>25</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -42,10 +42,18 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.13.0</version>
+                <version>3.14.1</version>
                 <configuration>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>1.18.42</version>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
             <plugin>
@@ -57,7 +65,7 @@
                 <artifactId>prettier-maven-plugin</artifactId>
                 <version>0.22</version>
                 <configuration>
-                    <prettierJavaVersion>2.6.0</prettierJavaVersion>
+                    <prettierJavaVersion>2.7.7</prettierJavaVersion>
                     <printWidth>120</printWidth>
                     <tabWidth>4</tabWidth>
                     <useTabs>true</useTabs>
