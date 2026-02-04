@@ -63,9 +63,9 @@
             <plugin>
                 <groupId>com.hubspot.maven.plugins</groupId>
                 <artifactId>prettier-maven-plugin</artifactId>
-                <version>0.24</version>
+                <version>0.22</version>
                 <configuration>
-                    <prettierJavaVersion>2.8.8</prettierJavaVersion>
+                    <prettierJavaVersion>2.8.1</prettierJavaVersion>
                     <printWidth>120</printWidth>
                     <tabWidth>4</tabWidth>
                     <useTabs>true</useTabs>

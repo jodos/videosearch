@@ -32,9 +32,10 @@ public class MainGUI extends JFrame implements ActionListener, ListSelectionList
 	private Object currentActionEventSource = null;
 
 	public MainGUI(
-			CategoryRepository categoryRepository,
-			RatingRepository ratingRepository,
-			MovieRepository movieRepository) {
+		CategoryRepository categoryRepository,
+		RatingRepository ratingRepository,
+		MovieRepository movieRepository
+	) {
 		this.setResizable(false);
 		this.setTitle("Liste de films");
 		this.setSize(new Dimension(800, 600));
@@ -129,27 +130,27 @@ public class MainGUI extends JFrame implements ActionListener, ListSelectionList
 		}
 
 		// Extract category codes
-		List<Integer> categoryCodes = categories.stream()
-				.map(Category::getCode)
-				.toList();
+		List<Integer> categoryCodes = categories.stream().map(Category::getCode).toList();
 
 		// Extract rating codes
-		List<String> ratingCodes = ratings.stream()
-				.map(Rating::getRatingId)
-				.toList();
+		List<String> ratingCodes = ratings.stream().map(Rating::getRatingId).toList();
 
 		// If only categories are selected
 		if (!categoryCodes.isEmpty() && ratingCodes.isEmpty()) {
-			return movieRepository.findAll().stream()
-					.filter(movie -> categoryCodes.contains(movie.getCategoryCode()))
-					.toList();
+			return movieRepository
+				.findAll()
+				.stream()
+				.filter(movie -> categoryCodes.contains(movie.getCategoryCode()))
+				.toList();
 		}
 
 		// If only ratings are selected
 		if (categoryCodes.isEmpty() && !ratingCodes.isEmpty()) {
-			return movieRepository.findAll().stream()
-					.filter(movie -> ratingCodes.contains(movie.getRating()))
-					.toList();
+			return movieRepository
+				.findAll()
+				.stream()
+				.filter(movie -> ratingCodes.contains(movie.getRating()))
+				.toList();
 		}
 
 		// If both filters are selected
