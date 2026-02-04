@@ -32,10 +32,9 @@ public class MainGUI extends JFrame implements ActionListener, ListSelectionList
 	private Object currentActionEventSource = null;
 
 	public MainGUI(
-		CategoryRepository categoryRepository,
-		RatingRepository ratingRepository,
-		MovieRepository movieRepository
-	) {
+			CategoryRepository categoryRepository,
+			RatingRepository ratingRepository,
+			MovieRepository movieRepository) {
 		this.setResizable(false);
 		this.setTitle("Liste de films");
 		this.setSize(new Dimension(800, 600));
@@ -111,8 +110,7 @@ public class MainGUI extends JFrame implements ActionListener, ListSelectionList
 		List<Category> currentCategories = formPanel.getCurrentCategories();
 		List<Rating> currentRatings = formPanel.getCurrentRatings();
 
-		// TODO add "dynamic" request into movieRepository
-		List<Movie> movies = movieRepository.findAll();
+		List<Movie> movies = findMoviesByFilters(currentCategories, currentRatings);
 
 		resultPanel.reset();
 		// requestPanel.print();
@@ -122,5 +120,39 @@ public class MainGUI extends JFrame implements ActionListener, ListSelectionList
 		} else {
 			resultPanel.showInfo();
 		}
+	}
+
+	private List<Movie> findMoviesByFilters(List<Category> categories, List<Rating> ratings) {
+		// If no filters are selected, return all movies
+		if (categories.isEmpty() && ratings.isEmpty()) {
+			return movieRepository.findAll();
+		}
+
+		// Extract category codes
+		List<Integer> categoryCodes = categories.stream()
+				.map(Category::getCode)
+				.toList();
+
+		// Extract rating codes
+		List<String> ratingCodes = ratings.stream()
+				.map(Rating::getRatingId)
+				.toList();
+
+		// If only categories are selected
+		if (!categoryCodes.isEmpty() && ratingCodes.isEmpty()) {
+			return movieRepository.findAll().stream()
+					.filter(movie -> categoryCodes.contains(movie.getCategoryCode()))
+					.toList();
+		}
+
+		// If only ratings are selected
+		if (categoryCodes.isEmpty() && !ratingCodes.isEmpty()) {
+			return movieRepository.findAll().stream()
+					.filter(movie -> ratingCodes.contains(movie.getRating()))
+					.toList();
+		}
+
+		// If both filters are selected
+		return movieRepository.findByCategoriesAndRatings(categoryCodes, ratingCodes);
 	}
 }
