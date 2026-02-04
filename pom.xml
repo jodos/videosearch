@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>4.0.0</version>
+        <version>4.0.2</version>
     </parent>
 
     <groupId>ch.lab4tech</groupId>
@@ -63,9 +63,9 @@
             <plugin>
                 <groupId>com.hubspot.maven.plugins</groupId>
                 <artifactId>prettier-maven-plugin</artifactId>
-                <version>0.22</version>
+                <version>0.24</version>
                 <configuration>
-                    <prettierJavaVersion>2.7.7</prettierJavaVersion>
+                    <prettierJavaVersion>2.8.8</prettierJavaVersion>
                     <printWidth>120</printWidth>
                     <tabWidth>4</tabWidth>
                     <useTabs>true</useTabs>
