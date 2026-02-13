@@ -29,7 +29,7 @@ public class ResultPanel extends JPanel {
 		textPane = new JTextPane();
 		textPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 
-		String[] jTableHeader = { "Title", "Rating", "CategoryCode", "Description" };
+		String[] jTableHeader = { "Title", "Rating", "Category", "Description" };
 		tableModel.setColumnIdentifiers(jTableHeader);
 		table.setModel(tableModel);
 		scrollPane.setViewportView(table);
